@@ -54,7 +54,9 @@ class QuestionsController extends Controller
      */
     public function show(Question $question)
     {
-        //
+        $question->load("answers.user"); // <---
+        $question->increment('views'); 
+        return view('questions.show', compact('question')); 
     }
 
     /**
